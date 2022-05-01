@@ -1,0 +1,187 @@
+<html>
+    <head>
+        <title>Information</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            * {box-sizing: border-box;}
+            body {font-family: Georgia, 'Times New Roman', Times, serif}
+            .mySlides {display: none;}
+            img {vertical-align: middle;}
+            .fadingButton
+            {
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                margin-left: 20px;
+                margin-top: -30px;
+            }
+            .button1
+            {
+                background-color: white; 
+                color: #347949; 
+                border: 2px solid #347949;
+            }
+            .button1:hover
+            {
+                background-color: #FACE48;
+                color: #347949;
+            }
+            .buttonText
+            {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-decoration: none;
+                font-size: 30;
+                color: #347949;
+            }
+            .slideshow-container 
+            {
+                max-width: 100%;
+                position: relative;
+                margin: auto;
+            }
+            .fade 
+            {
+                animation-name: fade;
+                animation-duration: 1s;
+            }
+            .dot 
+            {
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+                transition: background-color 0.4s ease;
+            }
+            .active 
+            {
+                background-color: #717171;
+            }
+            .sticky 
+            {
+                position: fixed;
+                top: 0;
+            }
+            #navbar a.navactive 
+            {
+                background-color: #007849;
+                color: #ffce00;
+            }
+            #navbar
+            {
+                width: 100%;
+                background-color: #ffce00;
+                overflow: auto;
+                left: 0px;
+                right: 0px;
+            }
+            #navbar a
+            {
+                color: #007849;
+                font-size: 20;
+                display: block;
+                float: left;
+                padding-left: 20px;
+                padding-right: 25px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                text-decoration: none;
+                transition: 0.4s;
+            }
+            #navbar a:hover
+            {
+                background-color: #007849;
+                color: #ffce00;
+                transition: 0.4s;
+            }
+            @keyframes fade 
+            {
+                from {opacity: 0} 
+                to {opacity: 1}
+            }
+            #click-image
+            {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="home.html"><i class="fa fa-fw fa-home"></i>Home</a>
+            <a href="information.html" class="navactive"><i class="fa fa-fw fa-book"></i>Information</a>
+            <a href=""><i class="fa fa-fw fa-envira"></i>3 Ways You Can Help</a>
+            <a href=""><i class="fa fa-fw fa-files-o"></i>Sources</a>
+        </div>
+        <br>
+        <div>
+            <p style="font-size: 35px; font-family: Georgia, 'Times New Roman', Times, serif; padding: 20px">One of the biggest producers of CO2 is transportation.<br> CO2 in the atmosphere causes climate change by trapping the heat on Earth, instead of releasing it into space.<br>This causes the slow and steady increase in temperature.<br>However, there are some solutions, such as the DAC machines discussed in the article below.</p>
+            <button class="fadingButton button1">
+                <a href="https://www.bbc.com/news/science-environment-53891414" target="_blank" class="buttonText">Learn More</a>
+            </button>
+        </div>
+        <br>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="statistics.png" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="causes_co2.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="impact.jpeg" style="width:100%">
+            </div>
+        <br>
+        </div>
+        <div style="text-align:center"> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+        </div>
+        <br>
+        <img src="dg.png" style="width: 100%; height: 30px;">
+    <script>
+        // Highlight 3: Image Carousel
+        // I chose this as a highlight because I thought this feature was neat and it helps the audience better visualize the statistics. This also does not take up too much space as it can fit in 3 images and switch between them so the reader can see all of them.
+        let slideIndex = 0;
+            showSlides();
+            function showSlides() 
+            {
+                let i;
+                let slides = document.getElementsByClassName("mySlides"); // Defining variables.
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) { // Looping to control the below statement (controls what will show up on the site.)
+                    slides[i].style.display = "none";  // Changing classes to control what the site displays.
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                for (i = 0; i < dots.length; i++) { // Looping to control the below statement (controls what will show up on the site.)
+                    dots[i].className = dots[i].className.replace(" active", ""); // Adding and subtracting classes from elements to control what the site displays.
+                }
+                slides[slideIndex-1].style.display = "block"; 
+                dots[slideIndex-1].className += " active"; // Controlling what shows up on the screen.
+                setTimeout(showSlides, 10000); // Time between each slide transition.
+            }
+        
+        // See home.html.
+        window.onscroll = function() {myFunction()};
+        var navbar = document.getElementById("navbar"); 
+        var sticky = navbar.offsetTop;
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky") 
+            } else {
+                navbar.classList.remove("sticky"); 
+            }
+        }    
+    </script>
+    </body>
+</html>

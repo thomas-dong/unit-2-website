@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body  
+            {
+                background-image: url("boi.gif");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100%;
+                background-position: center;
+            }
+            .collapsible 
+            {
+                background-color: #0375b4;
+                color: #ffffff;
+                cursor: pointer;
+                width: 100%;
+                padding: 20px;
+                font-size: 40px;
+                outline: none;
+                border: none;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                transition: 0.4s;
+            }
+
+            .active, .collapsible:hover 
+            {
+                background-color: #ffffff;
+                color: #0375b4;
+                transition: 0.4s;
+            }
+            .content 
+            {
+                padding: 0 25px;
+                max-height: 0px;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+                background-color: #26222882;
+                -webkit-text-stroke-width: 0.5px; 
+                -webkit-text-stroke-color: black;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                color: white;
+                font-size: 25px;
+            }
+            .container
+            {
+                position: relative;
+                text-align: center;
+                color: white;
+            }
+            .centered
+            {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .bottom-right
+            {
+                position: absolute;
+                bottom: 5%;
+                right: 5%;
+                transform: translate(10%, -10%);
+            }
+            #navbar
+            {
+                width: 100%;
+                background-color: #ffce00;
+                overflow: auto;
+                left: 0px;
+                right: 0px;
+            }
+            #navbar a.navactive 
+            {
+                background-color: #007849;
+                color: #ffce00;
+            }
+            #navbar a
+            {
+                color: #007849;
+                font-size: 20;
+                display: block;
+                float: left;
+                padding-left: 20px;
+                padding-right: 25px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                text-decoration: none;
+                transition: 0.4s;
+            }
+            #navbar a:hover
+            {
+                background-color: #007849;
+                color: #ffce00;
+                transition: 0.4s;
+            }
+            #main_text
+            {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 70;
+                color: white;
+            }
+            .sticky 
+            {
+                position: fixed;
+                top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="home.html" class="navactive"><i class="fa fa-fw fa-home"></i>Home</a>
+            <a href="information.html"><i class="fa fa-fw fa-book"></i>Information</a>
+            <a href=""><i class="fa fa-fw fa-envira"></i>3 Ways You Can Help</a>
+            <a href=""><i class="fa fa-fw fa-files-o"></i>Sources</a>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div id="main_text" class="container">
+            <img src="fh.jpeg" style="width: 100%;">
+            <div class="centered" style="width: 70%; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;">"We have a single mission: to protect and hand on the planet to the next generation."</div>
+            <div class="bottom-right" style="font-size: 30; -webkit-text-stroke-width: 0.5px; -webkit-text-stroke-color: black;">-Francois Hollande<br>President of France</div>
+        </div>
+        <img src="dg.png" style="width: 100%; height: 10px; opacity: 0%;">
+        <button class="collapsible">Did You Know?</button>
+        <div class="content">
+            <p>Global temperature has risen by 1.01 degrees celsius since 1880.<br><br>Arctic sea ice has decreased by 17% since 1979.<br><br>427 billion tons of ice sheets are melting each year since 2002.<br><br>Sea level has risen 3.94 inches since 1993.</p>
+        </div>
+        <script>
+            // Highlight 1: Collapsible Content
+            // I chose the collapsible because it displays information only when the user wishes it to. It will stay uncollapsed until the user clicks on it, and then the information will be displayed along with the collapsed section.
+            var coll = document.getElementsByClassName("collapsible"); // Defining variables.
+            var i;
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active"); // Adds active as a class when the user clicks on the collapsible. Once the class active is added, the collapsible opens and the content is revealed.
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            // Highlight 2: Sticky Navigation Bar
+            // I chose this feature because origninally, I did not intend for the navigation bar to follow the top of the screen, but I found out a navigation bar that follows the top of the screen improves the overall user experience by not making them have to scroll all the way up to change tabs.
+            window.onscroll = function() {myFunction()};
+            var navbar = document.getElementById("navbar"); // Defining variables.
+            var sticky = navbar.offsetTop;
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky") // Adds sticky as a class to navbar once the top of the screen is lower or equal to the navbar in y-level. Sticky causes the navbar to stick to the top of the screen, no matter how far down the webpage you are.
+                } else {
+                    navbar.classList.remove("sticky"); // When the top of the screen isn't below or equal to the navbar in y-level, sticky will not be applied to navbar as a class.
+                }
+            }
+        </script>
+    </body>
+</html>
